@@ -1,0 +1,19 @@
+{
+    "name": "khromov/amazing-marvin-bookmarklet-backend",
+    "type": "project",
+    "authors": [
+        {
+            "name": "khromov",
+            "email": "stanislav.khromov+github@gmail.com"
+        }
+    ],
+    "scripts": {
+        "dev":  "php -S localhost:8080 -t ./public"
+    },
+    "require": {
+        "ext-json": "^1.6"
+    },
+    "config": {
+        "process-timeout":0
+    }
+}

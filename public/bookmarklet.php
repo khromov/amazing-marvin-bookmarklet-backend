@@ -7,19 +7,46 @@ if($config->debug) {
 }
 
 $url = isset($_GET['url']) ? urldecode($_GET['url']) : '';
-$email = isset($_GET['email']) ? urldecode($_GET['email']) : '';
 $list = isset($_GET['list']) ? urldecode($_GET['list']) : '';
+$zapierToken = isset($_GET['token']) ? urldecode($_GET['token']) : '';
 
-if($url && $list && preg_match('/.*@marvin-[0-9]*\.appspotmail\.com$/', $email)) {
-    if($config->debug) {
-        var_dump("Sending email");
-        var_dump([$email, "{$url} #{$list}"]);
-    }
-    else {
-        mail($email, "{$url} #{$list}", '');
-        header("Location: {$url}", true, 302);
-    }
+if(!($url && $zapierToken)) {
+    echo "Error: Incorrect parameters sent.";
+    exit;
+}
+
+$task = [
+    'title' => "{$url} #{$list} +today",
+    'note' => '',
+];
+
+/* Assemble request headers */
+$requestHeaders = rtrim(array_reduce( [
+    'Content-Type: application/json',
+    "X-Zapier-Token: ${zapierToken}"
+], function($result, $header) {
+    return "{$result}{$header}\r\n";
+}));
+
+/* Form our options */
+$requestOptions = ['http' =>
+    [
+        'method'  => 'POST',
+        'header'  => $requestHeaders,
+        'content' => json_encode($task)
+    ]
+];
+
+$result = @file_get_contents('https://marvin-165117.appspot.com/api/addTask', false, stream_context_create($requestOptions));
+
+header("Content-Type: application/javascript");
+if($result !== false) {
+    ?>
+        window.location = <?php echo json_encode($url); ?>;
+    <?php
 }
 else {
-    echo "Something went wrong, please update the bookmarklet from {$config->bookmarkletUrl}.";
+   ?>
+    alert('Something went wrong!');
+    <?php
 }

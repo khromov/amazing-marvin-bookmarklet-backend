@@ -8,9 +8,9 @@ if($config->debug) {
     ini_set('display_errors', 1);
 }
 
-$url = isset($_GET['url']) ? urldecode($_GET['url']) : '';
-$list = isset($_GET['list']) ? urldecode($_GET['list']) : '';
-$zapierToken = isset($_GET['token']) ? urldecode($_GET['token']) : '';
+$url = isset($_GET['url']) ? rawurldecode($_GET['url']) : '';
+$list = isset($_GET['list']) ? rawurldecode($_GET['list']) : '';
+$zapierToken = isset($_GET['token']) ? rawurldecode($_GET['token']) : '';
 
 if(!($url && $zapierToken)) {
     echo "alert('Error: Incorrect parameters sent.');";

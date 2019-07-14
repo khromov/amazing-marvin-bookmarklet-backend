@@ -47,6 +47,6 @@ if($result !== false) {
 }
 else {
    ?>
-    alert('Something went wrong!');
+    alert('Something went wrong! Make sure you entered your Zapier key correctly, or get a new bookmarklet at <?php echo $config->baseUrl; ?>');
     <?php
 }

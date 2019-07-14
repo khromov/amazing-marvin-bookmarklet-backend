@@ -1,3 +1,4 @@
+<?php $config = json_decode(file_get_contents('../config.json')); ?>
 <!DOCTYPE HTML>
 <!--
 	Photon by HTML5 UP
@@ -61,7 +62,7 @@
 
 						<div class="col-12">
 							<p>
-								<a href="javascript:alert(1);" class="button primary solid marvin-button">Save to AM</a>
+								<a href="javascript:(function () {var baseUrl = '<?php echo $config->bookmarkletUrl; ?>';var token = '%TOKEN%';var list = '%LIST%';var scriptElement = document.createElement('scr' + 'ipt');try {if (!document.body) {throw 0;}document.title = '(Saving...) ' + document.title;scriptElement.setAttribute('src', baseUrl + '?url=' + encodeURIComponent(window.location.href) + '&token=' + encodeURIComponent(token) + '&list=' + encodeURIComponent(list));document.body.appendChild(scriptElement);} catch (e) {alert('Please wait until the page has loaded.');}})();void 0;" class="button primary solid marvin-button">Save to AM</a>
 							</p>
 							<p>
 								Drag the link above to your bookmark toolbar!

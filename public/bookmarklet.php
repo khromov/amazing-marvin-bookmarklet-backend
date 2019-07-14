@@ -15,8 +15,12 @@ if(!($url && $zapierToken)) {
     exit;
 }
 
+if($list) {
+    $list = "#" . ltrim($list, '#');
+}
+
 $task = [
-    'title' => "{$url} #{$list} +today",
+    'title' => "{$url} {$list} +today",
     'note' => '',
 ];
 

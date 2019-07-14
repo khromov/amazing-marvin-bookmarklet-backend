@@ -36,6 +36,13 @@ task('deploy:write_version', function () {
 });
 
 /**
+ * Restart associated containers
+ */
+task('deploy:service_restart', function () {
+    run('ee site restart amazing-marvin-bookmarklet.khromov.se');
+});
+
+/**
  * Display current Git commit hash
  */
 task('info:version', function() {
@@ -62,6 +69,7 @@ task('deploy', [
     'deploy:symlink',
     'deploy:write_version',
     'deploy:unlock',
+    'deploy:service_restart',
     'cleanup',
 ])->desc('Deploy your project');
 

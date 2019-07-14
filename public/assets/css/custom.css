@@ -13,3 +13,7 @@ img.top-image {
 .marvin-button {
     max-width: 400px;
 }
+
+#marvin-bookmarklet:hover {
+    cursor: move;
+}

@@ -1,6 +1,8 @@
 <?php
 $config = json_decode(file_get_contents('../config.json'));
 
+header("Content-Type: application/javascript");
+
 if($config->debug) {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -11,7 +13,7 @@ $list = isset($_GET['list']) ? urldecode($_GET['list']) : '';
 $zapierToken = isset($_GET['token']) ? urldecode($_GET['token']) : '';
 
 if(!($url && $zapierToken)) {
-    echo "Error: Incorrect parameters sent.";
+    echo "alert('Error: Incorrect parameters sent.');";
     exit;
 }
 
@@ -43,7 +45,6 @@ $requestOptions = ['http' =>
 
 $result = @file_get_contents($config->marvinEndpoint, false, stream_context_create($requestOptions));
 
-header("Content-Type: application/javascript");
 if($result !== false) {
     ?>
         window.location = <?php echo json_encode($url); ?>;

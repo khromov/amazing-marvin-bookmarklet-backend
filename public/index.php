@@ -23,7 +23,7 @@
 					<!-- <span class="icon solid major fa-cloud"></span> -->
 					<img class="top-image" src="images/amazing-marvin-logo.png" alt="Amazing Marvin logo" />
 					<h1>Save anything from the web<br /> with the <strong>Amazing Marvin Bookmarklet</strong></h1>
-					<p>With the Amazing Marvin Bookmarklet, you can save a website from your browser into an Amazing Marvin list. <br> You can for example use it to save articles you want to read later.</p>
+					<p>With the Amazing Marvin Bookmarklet, you can save a website from your browser into an Amazing Marvin folder. <br> You can for example use it to save articles you want to read later.</p>
 					<ul class="actions special">
 						<li><a href="#generate-bookmarklet" class="button scrolly">Generate your bookmarklet</a></li>
 					</ul>
@@ -52,7 +52,7 @@
 						</div>
 
 						<div class="col-12">
-							<input class="marvin-input" type="text" name="marvin-list" id="marvin-list" value="" placeholder="Marvin list name" />
+							<input class="marvin-input" type="text" name="marvin-list" id="marvin-list" value="" placeholder="Marvin folder name" />
 							<header>
 								<h4></h4>
 								<p>
@@ -63,7 +63,7 @@
 
 						<div class="col-12">
 							<p>
-								<a id="marvin-bookmarklet" href="" class="button primary solid marvin-button">Save to AM</a>
+								<a id="marvin-bookmarklet" onclick="event.preventDefault();" href="" class="button primary solid marvin-button">Save to AM</a>
 							</p>
 							<p>
 								Drag the link above to your bookmark toolbar!
@@ -91,7 +91,7 @@
                     <div class="col-4 col-12-medium">
                         <span class="image fit"><img src="images/am-3.png" alt="" /></span>
                         <h3>Read it</h3>
-                        <p>Your link will show up in the list you specified when configuring the bookmarklet.</p>
+                        <p>Your link will show up in the folder you specified when configuring the bookmarklet.</p>
                     </div>
                 </div>
             </div>

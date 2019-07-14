@@ -76,7 +76,6 @@
                 <header class="major">
                     <h2>How to add the bookmarklet</h2>
                 </header>
-                <p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>
                 <div class="row gtr-150">
                     <div class="col-4 col-12-medium">
                         <span class="image fit"><img src="images/am-1.png" alt="" /></span>

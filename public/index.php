@@ -41,7 +41,7 @@
 					<div class="row gtr-uniform gtr-50">
 
 						<div class="col-12">
-							<input class="marvin-input" type="text" name="marvin-email" id="marvin-email" value="" placeholder="Your Marvin Zapier key" />
+							<input class="marvin-input" type="text" name="marvin-token" id="marvin-token" value="" placeholder="Your Marvin Zapier key" />
 							<header>
 								<h4></h4>
 								<p>
@@ -51,7 +51,7 @@
 						</div>
 
 						<div class="col-12">
-							<input class="marvin-input" type="email" name="marvin-list" id="marvin-list" value="" placeholder="Marvin list name" />
+							<input class="marvin-input" type="text" name="marvin-list" id="marvin-list" value="" placeholder="Marvin list name" />
 							<header>
 								<h4></h4>
 								<p>
@@ -62,7 +62,7 @@
 
 						<div class="col-12">
 							<p>
-								<a href="javascript:(function () {var baseUrl = '<?php echo $config->bookmarkletUrl; ?>';var token = '%TOKEN%';var list = '%LIST%';var scriptElement = document.createElement('scr' + 'ipt');try {if (!document.body) {throw 0;}document.title = '(Saving...) ' + document.title;scriptElement.setAttribute('src', baseUrl + '?url=' + encodeURIComponent(window.location.href) + '&token=' + encodeURIComponent(token) + '&list=' + encodeURIComponent(list));document.body.appendChild(scriptElement);} catch (e) {alert('Please wait until the page has loaded.');}})();void 0;" class="button primary solid marvin-button">Save to AM</a>
+								<a id="marvin-bookmarklet" href="" class="button primary solid marvin-button">Save to AM</a>
 							</p>
 							<p>
 								Drag the link above to your bookmark toolbar!
@@ -435,11 +435,15 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</section>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        <script>
+            var bookmarkletTemplate = "javascript:(function () {var baseUrl = '<?php echo $config->bookmarkletUrl; ?>';var token = '%TOKEN%';var list = '%LIST%';var scriptElement = document.createElement('scr' + 'ipt');try {if (!document.body) {throw 0;}document.title = '(Saving...) ' + document.title;scriptElement.setAttribute('src', baseUrl + '?url=' + encodeURIComponent(window.location.href) + '&token=' + encodeURIComponent(token) + '&list=' + encodeURIComponent(list));document.body.appendChild(scriptElement);} catch (e) {alert('Please wait until the page has loaded.');}})();void 0;";
+        </script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/custom.js"></script>
 	</body>
 </html>

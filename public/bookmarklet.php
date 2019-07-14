@@ -37,7 +37,7 @@ $requestOptions = ['http' =>
     ]
 ];
 
-$result = @file_get_contents('https://marvin-165117.appspot.com/api/addTask', false, stream_context_create($requestOptions));
+$result = @file_get_contents($config->marvinEndpoint, false, stream_context_create($requestOptions));
 
 header("Content-Type: application/javascript");
 if($result !== false) {

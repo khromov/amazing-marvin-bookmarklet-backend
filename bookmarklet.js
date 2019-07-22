@@ -1,19 +1,31 @@
 /* Unminified bookmarklet code */
 (function () {
-    var baseUrl = '';
-    var token = '';
-    var list = 'Reading';
+    const token = '';
+    const list = 'Reading';
+    const labels = 'Foo, bar, baz bad';
+    const scheduleToday = true;
+    const baseUrl = 'https://marvin-165117.appspot.com/api/addTask';
 
-    var scriptElement = document.createElement('scr' + 'ipt');
-    try {
-        if (!document.body) {
-            throw 0;
-        }
-        document.title = '(Saving...) ' + document.title;
-        scriptElement.setAttribute('src', baseUrl + '?url=' + encodeURIComponent(window.location.href) + '&token=' + encodeURIComponent(token) + '&list=' + encodeURIComponent(list));
-        document.body.appendChild(scriptElement);
-    } catch (e) {
-        alert('Please wait until the page has loaded.');
-    }
+    window.history.replaceState(null, null, ' ');
+
+    let postData = {
+        title: document.title.replace(/[+#]/g, '') + ' - ' + window.location.href + (scheduleToday ? '+today ' : '') + ' #' + list.replace(' ', '') + ' ' + labels.split(',').map(function(label) { return '@' + label.trim().replace(' ', '') }).join(' ')
+    };
+
+    const response = fetch(baseUrl, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+            'X-Zapier-Token': token.trim(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+    }).then(function(data) {
+        window.location.reload();
+        console.log(data)
+    }).catch(function(error) {
+        console.error(error);
+        alert('Something went wrong when saving the page. Some pages disallow bookmarklets. If this error persists across many pages, try getting a new bookmarklet. The error was: ' + error);
+    });
 })();
-

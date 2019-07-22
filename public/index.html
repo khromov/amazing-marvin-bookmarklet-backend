@@ -1,4 +1,3 @@
-<?php $config = json_decode(file_get_contents('../config.json')); ?>
 <!DOCTYPE HTML>
 <!--
 	Photon by HTML5 UP
@@ -56,10 +55,26 @@
 							<header>
 								<h4></h4>
 								<p>
-									For example "Reading"
+									For example "Reading". <br>Spaces in folder names are not supported.
 								</p>
 							</header>
 						</div>
+
+                        <div class="col-12">
+                            <input class="marvin-input" type="text" name="marvin-labels" id="marvin-labels" value="" placeholder="Marvin labels" />
+                            <header>
+                                <h4></h4>
+                                <p>
+                                    Comma separated.  For example: Important, InProgress. <br> Spaces in label names are not supported.
+                                </p>
+                            </header>
+                        </div>
+
+                        <div class="col-12">
+                            <input type="checkbox" id="marvin-scheduletoday" name="marvin-scheduletoday" checked>
+                            <label for="marvin-scheduletoday">Schedule reading items for today</label>
+                        </div>
+
 
 						<div class="col-12">
 							<p>
@@ -108,7 +123,7 @@
 
 		<!-- Scripts -->
         <script>
-            var bookmarkletTemplate = "javascript:(function () {var baseUrl = '<?php echo $config->bookmarkletUrl; ?>';var token = '%TOKEN%';var list = '%LIST%';var scriptElement = document.createElement('scr' + 'ipt');try {if (!document.body) {throw 0;}document.title = '(Saving...) ' + document.title;scriptElement.setAttribute('src', baseUrl + '?url=' + encodeURIComponent(window.location.href) + '&token=' + encodeURIComponent(token) + '&list=' + encodeURIComponent(list));document.body.appendChild(scriptElement);} catch (e) {alert('Please wait until the page has loaded.');}})();void 0;";
+            let bookmarkletTemplate = "javascript:(function () {const token = '%TOKEN%';const list = '%LIST%';const labels = '%LABELS%';const scheduleToday = %SCHEDULETODAY%;const baseUrl = 'https://marvin-165117.appspot.com/api/addTask';window.history.replaceState(null, null, ' ');let postData = {title: document.title.replace(/[+#]/g, '') + ' - ' + window.location.href + (scheduleToday ? '+today ' : '') + ' #' + list.replace(' ', '') + ' ' + labels.split(',').map(function(label) { return '@' + label.trim().replace(' ', '') }).join(' ')};const response = fetch(baseUrl, {method: 'POST',mode: 'cors',cache: 'no-cache',headers: {'X-Zapier-Token': token.trim(),'Content-Type': 'application/json',},body: JSON.stringify(postData),}).then(function(data) {window.location.reload();console.log(data)}).catch(function(error) {console.error(error);alert('Something went wrong when saving the page. Some pages disallow bookmarklets. If this error persists across many pages, try getting a new bookmarklet. The error was: ' + error);});})(); void 0;";
         </script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.scrolly.min.js"></script>

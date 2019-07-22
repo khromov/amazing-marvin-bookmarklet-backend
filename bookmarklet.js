@@ -8,8 +8,12 @@
 
     window.history.replaceState(null, null, ' ');
 
+    const parsedList = list.trim() ? ' #' + list.replace(' ', '') : '';
+    const parsedLabels = labels.trim() ? ' ' + labels.split(',').map(function(label) { return '@' + label.trim().replace(' ', '') }).join(' ') : '';
+    const parsedSchedule = scheduleToday ? ' +today' : '';
+
     let postData = {
-        title: document.title.replace(/[+#]/g, '') + ' - ' + window.location.href + (scheduleToday ? '+today ' : '') + ' #' + list.replace(' ', '') + ' ' + labels.split(',').map(function(label) { return '@' + label.trim().replace(' ', '') }).join(' ')
+        title: document.title.replace(/[+#]/g, '') + ' - ' + window.location.href  + parsedList + parsedLabels + parsedSchedule
     };
 
     const response = fetch(baseUrl, {
@@ -29,3 +33,4 @@
         alert('Something went wrong when saving the page. Some pages disallow bookmarklets. If this error persists across many pages, try getting a new bookmarklet. The error was: ' + error);
     });
 })();
+

@@ -17,3 +17,9 @@ img.top-image {
 #marvin-bookmarklet:hover {
     cursor: move;
 }
+
+.marvin-changelog {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}

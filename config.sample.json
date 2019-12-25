@@ -1,6 +1,0 @@
-{
- "baseUrl": "http://localhost:8080/",
- "bookmarkletUrl": "http://localhost:8080/bookmarklet.php",
- "debug": true,
- "marvinEndpoint": "https://marvin-165117.appspot.com/api/addTask"
-}

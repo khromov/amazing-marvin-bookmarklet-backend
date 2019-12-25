@@ -15,3 +15,4 @@ jobs:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           source-directory: public
           deploy-branch: gh-pages
+          build-command: echo NOOP

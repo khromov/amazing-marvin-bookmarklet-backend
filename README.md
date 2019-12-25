@@ -1,6 +1,6 @@
 # Amazing Marvin Bookmarklet
  
-Visit https://amazing-marvin-bookmarklet.khromov.se/ to install the [Amazing Marvin](https://www.amazingmarvin.com/) bookmarklet.
+Visit **https://amazing-marvin-bookmarklet.khromov.se** to install the [Amazing Marvin](https://www.amazingmarvin.com/) bookmarklet.
 
 ### Deploying a new version
 

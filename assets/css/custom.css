@@ -1,0 +1,25 @@
+img.top-image {
+    max-width: 300px;
+    height: auto;
+}
+
+.marvin-input {
+    display: block;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.marvin-button {
+    max-width: 400px;
+}
+
+#marvin-bookmarklet:hover {
+    cursor: move;
+}
+
+.marvin-changelog {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}

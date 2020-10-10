@@ -3,7 +3,7 @@ javascript:
     const token = '%TOKEN%';
     const list = '%LIST%';
     const labels = '%LABELS%';
-    const scheduleToday = true;
+    const scheduleToday = '%SCHEDULETODAY%';
     const baseUrl = 'https://marvin-165117.appspot.com/api/addTask';
 
     window.history.replaceState(null, null, ' ');

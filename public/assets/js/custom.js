@@ -6,7 +6,7 @@ var replaceBookmarklet = function() {
     bookmarkletNewLink = bookmarkletNewLink.replace('%TOKEN%', document.getElementById("marvin-token").value);
     bookmarkletNewLink = bookmarkletNewLink.replace('%LIST%', document.getElementById("marvin-list").value);
     bookmarkletNewLink = bookmarkletNewLink.replace('%LABELS%', document.getElementById("marvin-labels").value);
-    bookmarkletNewLink = bookmarkletNewLink.replace('%SCHEDULETODAY%', document.getElementById("marvin-scheduletoday").checked ? 'true' : 'false');
+    bookmarkletNewLink = bookmarkletNewLink.replace('%SCHEDULETODAY%', document.getElementById("marvin-scheduletoday").checked ? 'true' : '');
     bookmarkletLinkElement.href = bookmarkletNewLink;
 
     console.log(bookmarkletLinkElement.href);
